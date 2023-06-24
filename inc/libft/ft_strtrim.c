@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 15:27:54 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 15:28:35 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	char	*ps1;
+	int		start;
+	int		end;
+	int		len;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	if (s1 == NULL || set == NULL)
+		return (ft_strdup(""));
+	ps1 = (char *) s1;
+	start = 0;
+	while (ft_strchr(set, ps1[start]) != NULL)
+		start++;
+	end = ft_strlen(s1);
+	while ((ft_strchr(set, ps1[end]) != NULL))
+		end--;
+	len = end - start + 1 ;
+	return (ft_substr(ps1, start, len));
 }

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/09 17:01:26 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/09 17:07:20 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	t_list	*temp;
+	t_list	*p_map;
+	t_list	**p_map2;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	if (!lst || !f || !del)
+		return (0);
+	p_map = NULL;
+	p_map2 = &p_map;
+	while (lst != NULL)
+	{
+		temp = ft_lstnew(f(lst->content));
+		ft_lstadd_back(p_map2, temp);
+		lst = lst->next;
+	}
+	return (p_map);
 }

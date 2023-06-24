@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 14:53:57 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/09 15:22:23 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	char			*mapi;
+	unsigned int	i;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	if (!s)
+		return (0);
+	mapi = (char *) malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!mapi)
+		return (0);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		mapi[i] = f(i, s[i]);
+		i++;
+	}
+	mapi[i] = '\0';
+	return (mapi);
 }

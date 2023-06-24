@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 14:49:52 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 14:51:38 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	char		*temp_dst;
+	const char	*temp_src;
+	size_t		i;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	i = 0;
+	temp_dst = dst;
+	temp_src = src;
+	if (temp_dst == NULL && temp_src == NULL)
+		return (0);
+	while (n > 0)
+	{
+		temp_dst[i] = temp_src[i];
+		i++;
+		n--;
+	}
+	return ((void *) dst);
 }

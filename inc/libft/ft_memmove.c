@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 15:33:05 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 15:48:57 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	const char		*temp_src;
+	char			*temp_dst;
+	unsigned int	i;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	temp_dst = dst;
+	temp_src = src;
+	if (temp_dst == NULL && temp_src == NULL)
+		return (0);
+	if (src < dst)
+	{
+		i = len - 1;
+		while (len > 0)
+		{
+			temp_dst[i] = temp_src[i];
+			i--;
+			len--;
+		}
+	}
+	else
+		ft_memcpy(dst, src, len);
+	return (dst);
 }

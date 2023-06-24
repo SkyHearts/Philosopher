@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/10/25 14:42:40 by ywong             #+#    #+#             */
+/*   Updated: 2022/11/21 15:30:49 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-static void	ft_writestr(const char *str)
-{
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+# include <stdarg.h>
+# include <unistd.h>
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
-}
+int	ft_printf(const char *str, ...);
+int	ft_putchar(int c);
+int	ft_putnbr_dec(int nb);
+int	ft_putnbr_hex(unsigned int nb, char c);
+int	ft_putnbr_uns_dec(unsigned int nb);
+int	ft_putptr(unsigned long nb);
+int	ft_putstr(char *s);
+
+#endif

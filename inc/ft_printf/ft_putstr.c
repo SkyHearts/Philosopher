@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/08/21 16:12:50 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/20 16:21:12 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "ft_printf.h"
 
-static void	ft_writestr(const char *str)
+int	ft_slen(char *s)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
+	int	c;
+
+	c = 0;
+	while (s[c])
+		c++;
+	return (c);
 }
 
-void	ft_error(const char *str)
+int	ft_putstr(char *s)
 {
-	ft_writestr(str);
+	int	len;
+
+	if (!s)
+		return (write(1, "(null)", 6));
+	len = write(1, s, ft_slen(s));
+	return (len);
 }

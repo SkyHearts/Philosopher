@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 14:55:18 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 15:05:58 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	size_t	c;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	c = 0;
+	while (c < n && (s1[c] != '\0' || s2[c] != '\0'))
+	{	
+		if (s1[c] != s2[c])
+			return ((unsigned char)s1[c] - (unsigned char)s2[c]);
+		c++;
+	}
+	return (0);
 }

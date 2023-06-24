@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 13:29:45 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 13:30:37 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	void	*ptr;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (0);
+	ft_bzero (ptr, size * count);
+	return (ptr);
 }

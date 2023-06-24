@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 15:44:31 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 15:44:54 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+char	*ft_strdup(const char *src)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	int		size;
+	int		c;
+	char	*srccpy;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	size = 0;
+	c = 0;
+	while (src[size] != '\0')
+		size++;
+	srccpy = (char *) malloc(sizeof(char) * size + 1);
+	if (srccpy)
+	{
+		while (src[c] != '\0')
+		{
+			srccpy[c] = src[c];
+			c++;
+		}
+		srccpy[c] = '\0';
+		return (srccpy);
+	}
+	else
+		return (NULL);
 }

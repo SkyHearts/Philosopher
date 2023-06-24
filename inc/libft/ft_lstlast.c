@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/09 17:03:50 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/09 17:05:56 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+t_list	*ft_lstlast(t_list *lst)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	t_list	*ptr;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	if (!lst)
+		return (0);
+	ptr = lst;
+	while (ptr->next != NULL)
+	{
+		ptr = ptr->next;
+	}
+	return (ptr);
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/09 17:04:21 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/09 17:08:22 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+t_list	*ft_lstnew(void *content)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	t_list	*head;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	head = malloc(sizeof(t_list));
+	if (!head)
+		return (0);
+	head->content = content;
+	head->next = NULL;
+	return (head);
 }

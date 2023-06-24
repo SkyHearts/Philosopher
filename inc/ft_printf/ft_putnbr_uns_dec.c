@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_uns_dec.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/09/04 18:36:10 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/20 16:21:52 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "ft_printf.h"
 
-static void	ft_writestr(const char *str)
+int	get_unslen(unsigned int nb)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
+	int	count;
+
+	count = 0;
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (count);
 }
 
-void	ft_error(const char *str)
+int	ft_putnbr_uns_dec(unsigned int nb)
 {
-	ft_writestr(str);
+	int	count;
+
+	count = get_unslen(nb);
+	if (nb > 9)
+	{
+		ft_putnbr_uns_dec(nb / 10);
+		ft_putnbr_uns_dec(nb % 10);
+	}
+	else
+		ft_putchar(nb + 48);
+	return (count);
 }

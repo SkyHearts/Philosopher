@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 13:35:43 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 13:37:06 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	unsigned char	*temp_s;
+	unsigned int	i;
+	unsigned char	temp_c;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	i = 0;
+	temp_c = (unsigned char) c;
+	temp_s = (unsigned char *) s;
+	while (n > 0)
+	{
+		if (*temp_s != temp_c)
+		{
+			temp_s++;
+			n--;
+		}
+		else
+			return (temp_s);
+	}
+	return (NULL);
 }

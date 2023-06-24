@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/11/07 13:37:55 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 13:38:29 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	unsigned char	*ps1;
+	unsigned char	*ps2;
+	unsigned int	count;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	if (n == 0)
+		return (0);
+	ps1 = (unsigned char *)s1;
+	ps2 = (unsigned char *)s2;
+	count = 0;
+	while (--n > 0 && ps1[count] == ps2[count])
+		count++;
+	return (ps1[count] - ps2[count]);
 }

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyim <jyim@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 11:15:11 by jyim              #+#    #+#             */
-/*   Updated: 2023/03/10 10:20:57 by jyim             ###   ########.fr       */
+/*   Created: 2022/08/23 10:33:27 by jyim              #+#    #+#             */
+/*   Updated: 2022/11/07 15:46:37 by jyim             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-static void	ft_writestr(const char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
-}
+	unsigned int	n;
 
-void	ft_error(const char *str)
-{
-	ft_writestr(str);
+	n = 0;
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (src[n] != '\0' && --dstsize > 0)
+	{
+		dst[n] = src[n];
+		n++;
+	}
+	dst[n] = '\0';
+	while (src[n] != '\0')
+		n++;
+	return (n);
 }
